@@ -1,10 +1,13 @@
+import Header from "./components/Header"
+
 
 function App() {
+  const container = `bg-indigo-50`
 
 
   return (
-    <div className="bg-green-500">
-      <p>App here</p>
+    <div className={container}>
+      <Header />
     </div>
   )
 }
