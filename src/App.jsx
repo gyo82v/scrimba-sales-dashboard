@@ -8,7 +8,7 @@ import Form from "./components/Form"
 
 function App() {
   const [metrics, setMetrics] = useState([])
-  const container = `bg-indigo-50 flex flex-col`
+  const container = `bg-indigo-50 flex flex-col min-h-screen`
 
   useEffect(() => {
     const fetchMetrics = async () => {
@@ -26,13 +26,13 @@ function App() {
   }, [])
 
 
-
-
   return (
     <div className={container}>
       <Header />
-      <Dashboard metrics={metrics} />
-      <Form metrics={metrics} />
+      <main className="flex flex-col flex-1 p-4">
+        <Dashboard metrics={metrics} />
+        <Form metrics={metrics} />
+      </main>
     </div>
   )
 }
