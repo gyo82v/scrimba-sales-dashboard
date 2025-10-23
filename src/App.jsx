@@ -8,13 +8,11 @@ import Form from "./components/Form"
 
 function App() {
   const [metrics, setMetrics] = useState([])
-  const container = `bg-indigo-50 flex flex-col min-h-screen`
 
   useEffect(() => {
     const fetchMetrics = async () => {
       try{
         const {error, data} = await supabase.from('sales_deals').select(`name, value.sum()`)
-        console.log("res: ", data)
         if(error) throw error
         setMetrics(data)
       }catch(err){
@@ -23,13 +21,23 @@ function App() {
     }
 
     fetchMetrics()
+
+    const channel = supabase.channel("deal-changes").on("postgres_changes", {
+      event : '*',
+      schema : "public",
+      table : "sales_deals"
+    }, 
+    payload => {fetchMetrics()}
+  ).subscribe()
+
+  return () => {supabase.removeChannel(channel)}
   }, [])
 
 
   return (
-    <div className={container}>
+    <div className="bg-indigo-50 flex flex-col min-h-screen w-full">
       <Header />
-      <main className="flex flex-col flex-1 p-4">
+      <main className="flex flex-col items-center w-full flex-1 p-4">
         <Dashboard metrics={metrics} />
         <Form metrics={metrics} />
       </main>

@@ -5,7 +5,6 @@ import supabase from "../supabase-client.js"
 export default function Form({metrics}){
     const [error, submitAction, isPending] = useActionState(async (prev, formData) => {
         const newDeal = {name : formData.get("name"), value : formData.get("value")}
-        console.log("new deal: ", newDeal)
         const {error} = await supabase.from("sales_deals").insert(newDeal)
         if(error){
             console.error("Error updating the database", error.message)
@@ -25,8 +24,8 @@ export default function Form({metrics}){
     };
 
     const transition = `transition-transform transition-colors transition-shadow duration-300 ease-in-out`
-    const container = `flex flex-col gap-3 md:flex-row p-4 bg-indigo-100 rounded-lg 
-                       shadow-lg text-indigo-700 w-full mt-10`
+    const container = `flex flex-col gap-3  p-4 bg-indigo-100 rounded-lg md:w-10/12 lg:w-8/12 xl:w-6/12
+                       shadow-lg text-indigo-700 w-full mt-16 `
     const label = `flex gap-2 w-full items-center`
     const input = `flex-2 
                    border-2 border-violet-300 rounded-lg px-4 py-2 font-semibold
@@ -45,7 +44,7 @@ export default function Form({metrics}){
     return(
         <form className={container} action={submitAction}>
             <label htmlFor="deal-name" className={label}>
-                Name: 
+                <span className="flex-1">Name:</span>
                 <select 
                   id="deal-name"
                   name="name"
@@ -60,7 +59,7 @@ export default function Form({metrics}){
                 </select>
             </label>
             <label htmlFor="deal-amount" className={label}>
-                Amount £
+                <span className="flex-1">Amount £</span>
                 <input
                  id = "deal-amount"
                  type="number"
@@ -83,12 +82,3 @@ export default function Form({metrics}){
     )
 }
 
-/*
- appearance-none         
-                         bg-[url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23634CFF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7' /%3E%3C/svg%3E")]
-
-
-
-
-
-*/
