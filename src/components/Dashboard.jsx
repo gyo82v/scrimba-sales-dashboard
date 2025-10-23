@@ -43,7 +43,7 @@ export default function Dashboard({metrics}){
                     primaryAxis,
                     secondaryAxes,
                     type : "bar",
-                    defaultColors : ["#58d675"],
+                    defaultColors : ["#4338ca"],
                     tooltip : {show : false}
                   }}
                 />
