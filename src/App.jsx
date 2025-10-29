@@ -5,6 +5,7 @@ import supabase from "./supabase-client.js"
 import Home from "./routes/Home.jsx"
 import Signin from "./routes/Signin.jsx"
 import Signup from "./routes/Signup.jsx"
+import RootRedirect from "./routes/RootRedirect.jsx"
 import Layout from "./components/layout/Layout.jsx"
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
     <Route element={<Layout />}>
+      <Route path="/" element={<RootRedirect />} />
       <Route path="dashboard" element={<Home metrics={metrics} />} />
       <Route path="signin" element={<Signin />} />
       <Route path="signup" element={<Signup />} />
