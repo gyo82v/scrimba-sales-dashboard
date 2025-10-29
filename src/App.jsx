@@ -1,5 +1,6 @@
 import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from "react-router-dom"
 import {useState, useEffect} from "react"
+import { AuthContextProvider } from "./context/AuthContext.jsx"
 import supabase from "./supabase-client.js"
 
 import Home from "./routes/Home.jsx"
@@ -47,7 +48,9 @@ function App() {
 
   return (
     <div className="bg-indigo-50 flex flex-col min-h-screen w-full">
-      <RouterProvider router={router} />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
     </div>
   )
 }
