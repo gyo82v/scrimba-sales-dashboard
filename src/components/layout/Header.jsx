@@ -4,7 +4,7 @@ export default function Header(){
                     text-2xl font-bold w-full`
     return(
         <header className={header}>
-            <h1>Sales Dashboard</h1>
+            <h1>Sales Team</h1>
         </header>
     )
 }

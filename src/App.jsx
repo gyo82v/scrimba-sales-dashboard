@@ -1,10 +1,11 @@
+import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from "react-router-dom"
 import {useState, useEffect} from "react"
 import supabase from "./supabase-client.js"
 
-import Header from "./components/Header"
-import Dashboard from "./components/Dashboard"
-import Form from "./components/Form"
-
+import Home from "./routes/Home.jsx"
+import Signin from "./routes/Signin.jsx"
+import Signup from "./routes/Signup.jsx"
+import Layout from "./components/layout/Layout.jsx"
 
 function App() {
   const [metrics, setMetrics] = useState([])
@@ -33,14 +34,18 @@ function App() {
   return () => {supabase.removeChannel(channel)}
   }, [])
 
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route element={<Layout />}>
+      <Route path="dashboard" element={<Home metrics={metrics} />} />
+      <Route path="signin" element={<Signin />} />
+      <Route path="signup" element={<Signup />} />
+    </Route>
+  ))
+
 
   return (
     <div className="bg-indigo-50 flex flex-col min-h-screen w-full">
-      <Header />
-      <main className="flex flex-col items-center w-full flex-1 p-4">
-        <Dashboard metrics={metrics} />
-        <Form metrics={metrics} />
-      </main>
+      <RouterProvider router={router} />
     </div>
   )
 }
