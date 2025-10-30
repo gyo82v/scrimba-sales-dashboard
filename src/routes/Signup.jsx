@@ -14,7 +14,7 @@ export default function Signup(){
 
         const {success, data, error} = await SignUpNewUser(email, password, name, account_type)
         if(error) return new Error(error)
-        if(success && data?.success){
+        if(success && data?.session){
             navigate("/dashboard")
             return null
         }
