@@ -29,6 +29,7 @@ export default function Header(){
         if(error) seterror(error.message)
         if(success) navigate("/signin")
     }
+
     return(
         <header className={header}>
             <h1>Sales Team</h1>
