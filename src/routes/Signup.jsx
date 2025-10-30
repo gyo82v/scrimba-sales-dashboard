@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext"
 import Form from "../components/form/index.jsx"
 
 export default function Signup(){
-    const {SignUpNewUser} = useAuth()
+    const {signUpNewUser} = useAuth()
     const navigate = useNavigate()
     const [error, submitAction, isPending] = useActionState(async (_prev, formData) => {
         const email = formData.get("email")
@@ -12,7 +12,7 @@ export default function Signup(){
         const name = formData.get("name")
         const account_type = formData.get("account_type")
 
-        const {success, data, error} = await SignUpNewUser(email, password, name, account_type)
+        const {success, data, error} = await signUpNewUser(email, password, name, account_type)
         if(error) return new Error(error)
         if(success && data?.session){
             navigate("/dashboard")

@@ -1,7 +1,11 @@
+import {Navigate} from "react-router-dom"
+import { useAuth } from "../context/AuthContext"
+
 export default function RootRedirect(){
-    return(
-        <section>
-            <h1>root redirect here</h1>
-        </section>
-    )
+    const {session} = useAuth()
+
+    if(session === undefined) return <div>loading...</div>
+
+    return session ? <Navigate to="/dashboard" /> : <Navigate to="/signin" />
+    
 }
