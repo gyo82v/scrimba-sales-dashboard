@@ -16,7 +16,8 @@ function App() {
   useEffect(() => {
     const fetchMetrics = async () => {
       try{
-        const {error, data} = await supabase.from('sales_deals').select(`name, value.sum()`)
+        const {error, data} = await supabase.from('sales_deals')
+        .select(`value.sum(), ...user_profiles!inner(name)`)
         if(error) throw error
         setMetrics(data)
       }catch(err){
