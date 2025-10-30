@@ -38,7 +38,7 @@ export default function Form({metrics}){
                          bg-no-repeat bg-right-3 bg-center`
     const btn = `px-4 py-2 font-bold bg-gradient-to-br from-indigo-700 to-violet-600 rounded-lg 
                  shadow-lg shadow-indigo-700/30 text-violet-100
-                 hover:scale-110 active:scale-95 hover:shadow-xl hover:from-violet-600 hover:to-indigo-700`
+                 hover:scale-105 active:scale-95 hover:shadow-xl hover:from-violet-600 hover:to-indigo-700`
 
 
     return(

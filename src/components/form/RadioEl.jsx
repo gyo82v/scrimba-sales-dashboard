@@ -1,9 +1,9 @@
 export default function RadioEl({}){
-    const container = ``
-    const legend = ``
-    const div = ``
+    const container = `border border-indigo-700 rounded-lg p-2`
+    const legend = `ml-1 font-semibold`
+    const div = `flex justify-evenly items-center`
     const label = ``
-    const input = ``
+    const input = `mr-1`
     return(
         <fieldset className={container}>
             <legend className={legend}>Select your role</legend>
