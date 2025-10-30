@@ -2,6 +2,7 @@ import {Route, createBrowserRouter, createRoutesFromElements, RouterProvider} fr
 import {useState, useEffect} from "react"
 import { AuthContextProvider } from "./context/AuthContext.jsx"
 import supabase from "./supabase-client.js"
+import ProtectedRoute from "./components/ProtectedRoute.jsx"
 
 import Home from "./routes/Home.jsx"
 import Signin from "./routes/Signin.jsx"
@@ -39,7 +40,7 @@ function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path="/" element={<RootRedirect />} />
-      <Route path="dashboard" element={<Home metrics={metrics} />} />
+      <Route path="dashboard" element={<ProtectedRoute><Home metrics={metrics}/></ProtectedRoute>} />
       <Route path="signin" element={<Signin />} />
       <Route path="signup" element={<Signup />} />
     </Route>
