@@ -42,20 +42,9 @@ export default function Header(){
                 </p>
                 <button className={btn} onClick={handleLogOut}><FaSignOutAlt className="h-5 w-5" /></button>
              </section> :
-             <nav className={nav}>
-                <NavLink 
-                  to="dashboard" 
-                  className={({isActive}) => isActive ? `${link} underline` : link}
-                >
-                    Dashboard
-                </NavLink>
-                <NavLink 
-                  to="signin" 
-                  className={({isActive}) => isActive ? `${link} underline` : link}
-                >
-                    Sign in
-                </NavLink>
-            </nav>
+             <section className={section}>
+                <p>Sign in to see the dashboard</p>
+             </section>
             }
         </header>
     )

@@ -23,7 +23,7 @@ export default function Signup(){
 
     return(
         <section className="w-full md:w-7/12 lg:w-5/12 xl:w-4/12 text-indigo-700 shadow-lg 
-                            p-4 rounded-lg md:p-6 lg:px-10 mt-6">
+                            p-4 rounded-lg md:p-6 lg:px-10 mt-14">
             <h2 className="text-xl font-bold mt-6">Sign up today!</h2>
             <Form submitAction={submitAction}>
                 <Form.Input name="name" error={error} isPending={isPending} label="name"/>
